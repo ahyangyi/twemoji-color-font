@@ -108,7 +108,7 @@ copy-extra: build/svg-bw
 # 4. Make the PGM into a black SVG trace with potrace
 build/svg-bw/%.svg: build/staging/%.svg | build/svg-bw
 	inkscape -w 1000 -h 1000 -z --export-file=$(TMP)/$(*F).png $<
-	convert $(TMP)/$(*F).png -level 0%,115% -background "#FFFFFF" -gravity center -extent 1000x1000 +antialias -colorspace Gray $(TMP)/$(*F)_gray.png
+	convert $(TMP)/$(*F).png -level 0%,115% -background "#FFFFFF" -gravity center -extent 1024x1024 +antialias -colorspace Gray $(TMP)/$(*F)_gray.png
 	convert $(TMP)/$(*F)_gray.png -threshold 31% $(TMP)/$(*F)_threshold_3.pgm
 	convert $(TMP)/$(*F)_gray.png -threshold 10% -morphology EdgeIn:12 Disk \( $(TMP)/$(*F)_threshold_3.pgm -negate \) -compose Multiply -composite $(TMP)/$(*F)_threshold_1.pgm
 	convert $(TMP)/$(*F)_gray.png -threshold 20% -morphology EdgeIn:12 Disk \( $(TMP)/$(*F)_threshold_3.pgm -negate \) -compose Multiply -composite $(TMP)/$(*F)_threshold_2.pgm
