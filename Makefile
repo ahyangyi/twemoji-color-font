@@ -113,6 +113,7 @@ build/svg-bw/%.svg: build/staging/%.svg | build/svg-bw
 		\( +clone -threshold 31% \) \
 		\( -clone 0 -threshold 10% -morphology EdgeIn:4 Disk:10.1 -negate -clone 1 -compose Screen -composite -negate -clone 1 -composite \) \
 		\( -clone 0 -threshold 20% -morphology EdgeIn:4 Disk:10.1 -negate -clone 1 -compose Screen -composite -negate -clone 2 -composite \) -delete 2 \
+		\( -clone 0 -threshold 39% -morphology EdgeOut:4 Disk:10.1 -clone 1 -compose Multiply -composite -negate -clone 2 -composite \) -delete 2 \
 		\( -clone 0 -threshold 41% -morphology EdgeOut:4 Disk:10.1 -clone 1 -compose Multiply -composite -negate -clone 2 -composite \) -delete 2 \
 		\( -clone 0 -threshold 45% -morphology EdgeOut:4 Disk:10.1 -clone 1 -compose Multiply -composite -negate -clone 2 -composite \) -delete 2 \
 		\( -clone 0 -threshold 51.4% -morphology EdgeOut:4 Disk:10.1 -clone 1 -compose Multiply -composite -negate -clone 2 -composite \) -delete 2 \
